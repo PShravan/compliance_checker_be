@@ -94,7 +94,7 @@ class OpenAIModel(AIModel):
 
 
 class GeminiAIModel(AIModel):
-    def __init__(self, api_key):
+    def __init__(self):
         genai.configure(api_key=os.getenv('GEMINI_API_KEY'))
         self.model = genai.GenerativeModel('gemini-pro')
 
@@ -105,7 +105,7 @@ class GeminiAIModel(AIModel):
 
 def check_non_compliance_issues(policy_content, webpage_content) -> dict:
     prompt = get_prompt(policy_content, webpage_content)
-    ai_model = GeminiAIModel('AIzaSyCdpi5j0R_LmzIckpD9cCwvBb8PuStuE_o')
+    ai_model = GeminiAIModel()
     results = ai_model.search(prompt)
     print(results)
     results = results.replace('`', '')

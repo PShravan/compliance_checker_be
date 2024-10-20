@@ -18,9 +18,6 @@ def get_policy_content(url):
     soup = BeautifulSoup(html_content, 'html.parser')
     main_content = soup.find('article')
     if main_content:
-        # Remove any nested navigation elements
-        # for nav in main_content.find_all('nav'):
-        #     nav.decompose()
         return main_content.get_text(strip=True)
 
 
